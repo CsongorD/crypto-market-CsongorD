@@ -25,7 +25,7 @@ class _LandingState extends State<Landing> {
                 children: <Widget>[
                   const Flexible(
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0, 0, 100),
+                      padding: EdgeInsets.all(15),
                       child: Text(
                         "The best Crypto Wallet website",
                         style: TextStyle(
@@ -37,7 +37,7 @@ class _LandingState extends State<Landing> {
                   ),
                   const Flexible(
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0, 0, 50),
+                      padding: EdgeInsets.all(15),
                       child: Text(
                         "'Of course it is.'",
                         style: TextStyle(
@@ -50,7 +50,8 @@ class _LandingState extends State<Landing> {
                   Flexible(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red[900]),
+                          // backgroundColor: Colors.red[900]
+                          ),
                       onPressed: () {},
                       child: const Padding(
                         padding: EdgeInsets.all(15.0),
@@ -70,11 +71,11 @@ class _LandingState extends State<Landing> {
           ),
           Flexible(
             child: Center(
-              child: Container(
+              child: SizedBox(
                 width: 300,
                 height: 300,
                 child: CircleAvatar(
-                  backgroundColor: Colors.brown,
+                  backgroundColor: Colors.black,
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
@@ -95,16 +96,18 @@ class _LandingState extends State<Landing> {
                             text: const Text(
                                 "1TROYOZ 999 FINE COPPER MJB MONETARY METALS",
                                 style: TextStyle(
-                                    fontSize: 13, fontWeight: FontWeight.bold)),
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold,
+                                )),
                           ),
                         ],
                       ),
                       const CircleAvatar(
                         radius: 135,
-                        backgroundColor: Color.fromARGB(194, 231, 169, 11),
+                        backgroundColor: Color.fromARGB(194, 234, 175, 25),
                         child: Icon(
                           Icons.currency_bitcoin_rounded,
-                          size: 250,
+                          size: 200,
                           color: Colors.black,
                         ),
                       ),

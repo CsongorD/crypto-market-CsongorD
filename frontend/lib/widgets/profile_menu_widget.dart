@@ -29,7 +29,7 @@ class ProfileMenuWidget extends StatelessWidget {
         ),
         child: Icon(
           icon,
-          color: Colors.red,
+          color: Colors.white,
         ),
       ),
       title: Text(

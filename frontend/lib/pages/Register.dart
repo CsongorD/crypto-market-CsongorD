@@ -4,44 +4,32 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:frontend/methods/api.dart';
-import 'package:frontend/pages/Profile.dart';
-import 'package:frontend/pages/Register.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:frontend/pages/Login.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Register extends StatefulWidget {
+  const Register({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterState extends State<Register> {
   TextEditingController email = TextEditingController();
+  TextEditingController name = TextEditingController();
   TextEditingController password = TextEditingController();
 
-  void loginUser() async {
+  void registerUser() async {
     final data = {
+      'name': name.text.toString(),
       'email': email.text.toString(),
       'password': password.text.toString(),
     };
-    final result = await API().postRequest(route: '/login', data: data);
+    final result = await API().postRequest(route: '/register', data: data);
     final response = jsonDecode(result.body);
     if (response['status'] == 200) {
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setInt('user_id', response['user']['id']);
-      await prefs.setString('name', response['user']['name']);
-      await prefs.setString('email', response['user']['email']);
-      await prefs.setString('token', response['token']);
-      await prefs.setBool('is_logged_in', true);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(response['message']),
-        ),
-      );
-
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => const Profile(),
+          builder: (context) => const Login(),
         ),
       );
     }
@@ -63,10 +51,31 @@ class _LoginState extends State<Login> {
                 const Padding(
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
                   child: Text(
-                    "Sign in",
+                    "Sign up",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 35,
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(10),
+                  width: 300,
+                  child: TextFormField(
+                    controller: name,
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
+                    cursorColor: Colors.white,
+                    decoration: const InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white)),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white)),
+                      labelStyle: TextStyle(color: Colors.white),
+                      iconColor: Colors.white,
+                      hintStyle: TextStyle(color: Colors.white),
+                      labelText: 'Enter your username',
                     ),
                   ),
                 ),
@@ -91,27 +100,6 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-                // Container(
-                //   margin: const EdgeInsets.all(10),
-                //   width: 300,
-                //   child: TextFormField(
-                //     controller: name,
-                //     style: const TextStyle(
-                //       color: Colors.white,
-                //     ),
-                //     cursorColor: Colors.white,
-                //     decoration: const InputDecoration(
-                //       enabledBorder: OutlineInputBorder(
-                //           borderSide: BorderSide(color: Colors.white)),
-                //       focusedBorder: OutlineInputBorder(
-                //           borderSide: BorderSide(color: Colors.white)),
-                //       labelStyle: TextStyle(color: Colors.white),
-                //       iconColor: Colors.white,
-                //       hintStyle: TextStyle(color: Colors.white),
-                //       labelText: 'Enter your username',
-                //     ),
-                //   ),
-                // ),
                 Container(
                   margin: const EdgeInsets.all(10),
                   width: 300,
@@ -141,20 +129,10 @@ class _LoginState extends State<Login> {
                         backgroundColor: Colors.grey[600],
                       ),
                       onPressed: () => {
-                            loginUser(),
+                            registerUser(),
                           },
-                      child: const Text("Sign in")),
-                ),
-                const Text('Or'),
-                TextButton(
-                    onPressed: () => {
-                          loginUser(),
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Register())),
-                        },
-                    child: const Text("Register"))
+                      child: const Text("Sign up")),
+                )
               ],
             ),
           ),

@@ -1,7 +1,12 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, use_build_context_synchronously
+
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:frontend/methods/api.dart';
 import 'package:frontend/pages/Profile.dart';
+import 'package:frontend/pages/Register.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -11,6 +16,37 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+
+  void loginUser() async {
+    final data = {
+      'email': email.text.toString(),
+      'password': password.text.toString(),
+    };
+    final result = await API().postRequest(route: '/login', data: data);
+    final response = jsonDecode(result.body);
+    if (response['status'] == 200) {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setInt('user_id', response['user']['id']);
+      await prefs.setString('name', response['user']['name']);
+      await prefs.setString('email', response['user']['email']);
+      await prefs.setString('token', response['token']);
+      await prefs.setBool('is_logged_in', true);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(response['message']),
+        ),
+      );
+
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => const Profile(),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +74,7 @@ class _LoginState extends State<Login> {
                   margin: const EdgeInsets.all(10),
                   width: 300,
                   child: TextFormField(
+                    controller: email,
                     style: const TextStyle(
                       color: Colors.white,
                     ),
@@ -50,14 +87,36 @@ class _LoginState extends State<Login> {
                       labelStyle: TextStyle(color: Colors.white),
                       iconColor: Colors.white,
                       hintStyle: TextStyle(color: Colors.white),
-                      labelText: 'Enter your username',
+                      labelText: 'Enter your email',
                     ),
                   ),
                 ),
+                // Container(
+                //   margin: const EdgeInsets.all(10),
+                //   width: 300,
+                //   child: TextFormField(
+                //     controller: name,
+                //     style: const TextStyle(
+                //       color: Colors.white,
+                //     ),
+                //     cursorColor: Colors.white,
+                //     decoration: const InputDecoration(
+                //       enabledBorder: OutlineInputBorder(
+                //           borderSide: BorderSide(color: Colors.white)),
+                //       focusedBorder: OutlineInputBorder(
+                //           borderSide: BorderSide(color: Colors.white)),
+                //       labelStyle: TextStyle(color: Colors.white),
+                //       iconColor: Colors.white,
+                //       hintStyle: TextStyle(color: Colors.white),
+                //       labelText: 'Enter your username',
+                //     ),
+                //   ),
+                // ),
                 Container(
                   margin: const EdgeInsets.all(10),
                   width: 300,
                   child: TextFormField(
+                    controller: password,
                     style: const TextStyle(
                       color: Colors.white,
                     ),
@@ -82,14 +141,20 @@ class _LoginState extends State<Login> {
                         backgroundColor: Colors.grey[600],
                       ),
                       onPressed: () => {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Profile()),
-                            )
+                            loginUser(),
                           },
                       child: const Text("Sign in")),
-                )
+                ),
+                const Text('Or'),
+                TextButton(
+                    onPressed: () => {
+                          loginUser(),
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Register())),
+                        },
+                    child: const Text("Register"))
               ],
             ),
           ),

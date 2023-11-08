@@ -1,10 +1,11 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, dead_code
 
 import 'package:flutter/material.dart';
 import 'package:frontend/pages/Login.dart';
-import 'package:frontend/pages/Logout.dart';
+import 'package:frontend/pages/Profile.dart';
 import 'package:frontend/widgets/CryptoList.dart';
 import 'package:frontend/widgets/landing.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -14,9 +15,29 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String isLoggedIn = "false";
+  late SharedPreferences preferences;
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    getUserLoginState();
+  }
+
+  void getUserLoginState() async {
+    setState(() {
+      isLoading = true;
+    });
+    preferences = await SharedPreferences.getInstance();
+    setState(() {
+      isLoading = false;
+      isLoggedIn = preferences.getBool('is_logged_in').toString();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    bool isLoggedIn = false;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -27,35 +48,45 @@ class _HomeState extends State<Home> {
             letterSpacing: 2,
           ),
         ),
-        backgroundColor: Colors.red[900],
+        // backgroundColor: Colors.red[900],
         titleSpacing: 2,
         leading: const Icon(Icons.currency_bitcoin),
         actions: [
-          IconButton(
-              onPressed: () {
-                if (isLoggedIn) {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Logout()));
-                } else {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Login()),
-                  );
-                }
-              },
-              icon: isLoggedIn
-                  ? const Icon(Icons.logout)
-                  : const Icon(Icons.fingerprint)),
+          isLoggedIn == "true"
+              ? IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Profile()),
+                    );
+                  },
+                  icon: const Icon(Icons.account_box),
+                )
+              : IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Login(),
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.fingerprint),
+                ),
         ],
       ),
-      body: const Center(
+      body: Center(
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Landing(),
-              CryptoList(),
-            ],
-          ),
+          child: isLoading
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : const Column(
+                  children: [
+                    Landing(),
+                    CryptoList(),
+                  ],
+                ),
         ),
       ),
     );

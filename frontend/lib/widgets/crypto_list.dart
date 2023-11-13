@@ -1,10 +1,8 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:frontend/widgets/crypto_list_widget.dart';
 import 'dart:convert'; // required to encode/decode json data
 import 'package:http/http.dart' as http;
-import 'Crypto.dart';
+import 'crypto.dart';
 import 'package:flutter/foundation.dart';
 
 class CryptoList extends StatefulWidget {
@@ -18,9 +16,12 @@ class _CryptoListState extends State<CryptoList> {
   Future<List<Crypto>> cryptosFuture = fetchCryptos();
 
   static Future<List<Crypto>> fetchCryptos() async {
-    String host = defaultTargetPlatform == TargetPlatform.android
-        ? "10.0.2.2"
-        : 'localhost';
+    String host = "";
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      host = '10.0.2.2';
+    } else {
+      host = "localhost";
+    }
     var url = Uri.parse("http://$host:8000/api/v1/cryptos");
     var headers = {'Content-Type': "application/json"};
     final response = await http.get(url, headers: headers);

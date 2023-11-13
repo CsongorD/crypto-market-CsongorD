@@ -41,7 +41,7 @@
 ## About The Project :page_with_curl:
 
 <br />
-Crypto Market is a software for following the current cryptocurrency prices, buying and selling crypto.
+Crypto Market is a multi-platform application for following the current cryptocurrency prices, buying and selling crypto.
 <br />
 <br />
 
@@ -162,7 +162,7 @@ So with this command, you can run this app from any device like: Windows, macOS,
 
 ## Usage :joystick:
 
-On this website currently you can track live info about cryptocurrencies on the landing page,
+On this application currently you can track live info about cryptocurrencies on the landing page,
 on the left side of the header section you can click on the fingerprint icon and register or login.
 After logging in, your profile page opens.
 If you are logged in the header on the landing page,

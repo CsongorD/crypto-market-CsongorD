@@ -90,26 +90,40 @@ composer install
 #### .env file
 
 1. Copy the .env.sample as .env,
-    - you can do that in the shell:
-      ```bash
-        cp .env.example .env 
-      ``` 
-   or
-    - manually copying the file
 
-2. fill up the environment variable for your personal mysql connection and with your https://coinmarketcap.com/
-   CRYPTO_API key
+   - you can do that in the shell:
+     ```bash
+       cp .env.example .env
+     ```
+     or
+   - manually copying the file
+
+2. Fill up the environment variables with your:
+
+- MySQL connection:
+  - DB_DATABASE = "YOUR DATABASE NAME"
+  - DB_USERNAME = "YOUR DATABASE USERNAME"
+  - DB_PASSWORD = "YOUR DATABASE PASSWORD"
+
+&&
+
+- https://coinmarketcap.com/ api key
+  - CRYPTO_API = "YOUR CRYPTO API KEY"
+
 3. Run the following code for generating a key to your app:
    ```bash
       php artisan key:generate
    ```
 
 #### Prepare the database
+
 Before all, you have to start your MySQL server to be able to fill up your database
+
 ```bash
 cd ./backend
 php artisan migrate
 ```
+
 - This command will run create the tables in your database.
 
 #### Running the code
@@ -171,27 +185,15 @@ On your profile page you can log out.
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [linkedin-url]: https://linkedin.com/in/linkedin_username
-
 [LinkedIn - Csongor]: https://www.linkedin.com/in/csongor-deak/
-
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-
 [Laravel.img]: https://img.shields.io/badge/Laravel-white?style=for-the-badge&logo=Laravel
-
 [Laravel-url]: https://laravel.com/
-
 [Flutter.img]: https://img.shields.io/badge/Flutter-white?style=for-the-badge&logo=Flutter&logoColor=%2302569B
-
 [Flutter-url]: https://flutter.dev/
-
 [MySQL.img]: https://img.shields.io/badge/Mysql-white?style=for-the-badge&logo=Mysql&logoColor=%234479A1
-
 [MySQL-url]: https://www.mysql.com/
-
 [Dart.img]: https://img.shields.io/badge/Dart-white?style=for-the-badge&logo=Dart&logoColor=%230175C2
-
 [Dart-url]: https://dart.dev/
-
 [PHP.img]: https://img.shields.io/badge/PHP-white?style=for-the-badge&logo=PHP&logoColor=%23777BB4
-
 [PHP-url]: https://www.php.net/

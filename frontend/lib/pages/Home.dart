@@ -1,9 +1,7 @@
-// ignore_for_file: file_names, dead_code
-
 import 'package:flutter/material.dart';
-import 'package:frontend/pages/Login.dart';
-import 'package:frontend/pages/Profile.dart';
-import 'package:frontend/widgets/CryptoList.dart';
+import 'package:frontend/pages/login.dart';
+import 'package:frontend/pages/profile.dart';
+import 'package:frontend/widgets/crypto_list.dart';
 import 'package:frontend/widgets/landing.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

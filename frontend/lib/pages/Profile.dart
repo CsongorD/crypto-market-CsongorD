@@ -1,10 +1,7 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
-import 'package:frontend/pages/Home.dart';
+import 'package:frontend/pages/home.dart';
 import 'package:frontend/widgets/update_profile_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../widgets/profile_menu_widget.dart';
 
 class Profile extends StatefulWidget {
@@ -125,7 +122,7 @@ class _ProfileState extends State<Profile> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    const UpdateProfileScreen()),
+                                    UpdateProfileScreen(prefs: preferences)),
                           ),
                           child: const Text("Edit profile"),
                         ),

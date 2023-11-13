@@ -1,11 +1,9 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
-import 'package:frontend/widgets/Crypto.dart';
+import 'package:frontend/widgets/crypto.dart';
 
 class CryptoListWidget extends StatefulWidget {
-  List<Crypto> cryptos;
-  CryptoListWidget(this.cryptos, {super.key});
+  final List<Crypto> cryptos;
+  const CryptoListWidget(this.cryptos, {super.key});
 
   @override
   State<CryptoListWidget> createState() => _CryptoListWidgetState();

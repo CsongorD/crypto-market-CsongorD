@@ -1,11 +1,10 @@
-// ignore_for_file: file_names, use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously
 
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:frontend/methods/api.dart';
-import 'package:frontend/pages/Profile.dart';
-import 'package:frontend/pages/Register.dart';
+import 'package:frontend/pages/profile.dart';
+import 'package:frontend/pages/register.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
@@ -28,9 +27,10 @@ class _LoginState extends State<Login> {
     final response = jsonDecode(result.body);
     if (response['status'] == 200) {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setInt('user_id', response['user']['id']);
+      await prefs.setInt('userId', response['user']['id']);
       await prefs.setString('name', response['user']['name']);
       await prefs.setString('email', response['user']['email']);
+      await prefs.setString('phone', response['user']['phone']);
       await prefs.setString('token', response['token']);
       await prefs.setBool('is_logged_in', true);
       ScaffoldMessenger.of(context).showSnackBar(

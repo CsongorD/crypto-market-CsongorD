@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateCryptoRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Config;
 
 class CryptoController extends Controller
 {
@@ -16,7 +17,8 @@ class CryptoController extends Controller
      */
     public function index()
     {
-        $CRYPTO_API =  env("CRYPTO_API");
+        $CRYPTO_API = config('env.CRYPTO_API_KEY');
+
         $url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest';
         $parameters = [
             'start' => '1',

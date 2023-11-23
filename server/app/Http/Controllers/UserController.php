@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Users\UpdateProfileRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
@@ -37,7 +38,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return  User::findOrFail($id);
     }
 
     /**
@@ -59,8 +60,9 @@ class UserController extends Controller
             'email' => $req->email,
             'phone' => $req->phone,
             'password' => $req->password,
-
         ]);
+        $response = ['status' => 200, 'message' => 'Profile updated successfully!'];
+        return response()->json($response);
     }
 
     /**

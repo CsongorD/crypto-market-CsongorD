@@ -25,6 +25,7 @@ class _RegisterState extends State<Register> {
     };
     final result = await API().postRequest(route: '/register', data: data);
     final response = jsonDecode(result.body);
+
     if (response['status'] == 200) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(

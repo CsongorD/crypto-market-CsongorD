@@ -7,16 +7,13 @@ import '../methods/api.dart';
 import '../pages/profile.dart';
 
 class UpdateProfileScreen extends StatefulWidget {
-  final SharedPreferences prefs;
-
-  const UpdateProfileScreen({required this.prefs, super.key});
+  const UpdateProfileScreen({super.key});
 
   @override
   State<UpdateProfileScreen> createState() => _UpdateProfileScreenState();
 }
 
 class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
-  late SharedPreferences preferences;
   bool isLoading = false;
   String name = '';
   String email = '';
@@ -28,22 +25,29 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   void initState() {
     super.initState();
     getUserData();
-    // setUserStates();
   }
 
   void getUserData() async {
     setState(() {
       isLoading = true;
     });
-    preferences = await SharedPreferences.getInstance();
+    var preferences = await SharedPreferences.getInstance();
     userId = preferences.getInt('userId');
-    name = preferences.getString("name").toString();
-    email = preferences.getString("email").toString();
-    phone = preferences.getString("phone").toString();
-    password = preferences.getString("password").toString();
+    var user = await getUserById(userId);
+
+    userId = user["id"];
+    name = user["name"];
+    email = user["email"];
+    phone = user["phone"];
+
     setState(() {
       isLoading = false;
     });
+  }
+
+  getUserById(userId) async {
+    final result = await API().getUser(userId: userId);
+    return jsonDecode(result.body);
   }
 
   void updateProfile() async {
@@ -55,9 +59,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
       'password': password,
     };
 
+
     final result = await API().putRequest(route: '/update-profile', data: data);
     final response = jsonDecode(result.body);
-
     if (response['status'] == 200) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(

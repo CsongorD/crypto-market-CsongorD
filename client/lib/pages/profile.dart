@@ -122,7 +122,7 @@ class _ProfileState extends State<Profile> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    UpdateProfileScreen(prefs: preferences)),
+                                    const UpdateProfileScreen()),
                           ),
                           child: const Text("Edit profile"),
                         ),
@@ -131,19 +131,13 @@ class _ProfileState extends State<Profile> {
                       const Divider(),
                       const SizedBox(height: 10),
                       ProfileMenuWidget(
-                        title: 'Settings',
-                        icon: Icons.settings,
-                        textColor: Colors.black,
-                        onPress: () {},
-                      ),
-                      ProfileMenuWidget(
                         title: 'Billing Details',
                         icon: Icons.wallet_outlined,
                         textColor: Colors.black,
                         onPress: () {},
                       ),
                       ProfileMenuWidget(
-                        title: 'User Management',
+                        title: 'App lock',
                         icon: Icons.verified_user,
                         textColor: Colors.black,
                         onPress: () {},

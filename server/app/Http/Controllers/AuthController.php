@@ -16,6 +16,7 @@ class AuthController extends Controller
             $cred->name = $request->name;
             $cred->email = $request->email;
             $cred->password = Hash::make($request->password);
+            $cred->phone = "";
             $cred->save();
             $response = ['status' => 200, 'message' => 'Registered successfully!'];
             return response()->json($response);

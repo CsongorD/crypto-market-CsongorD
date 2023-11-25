@@ -1,0 +1,16 @@
+vendor/
+
+node_modules/
+
+storage/
+
+.env
+.env.*
+*.env
+
+logs/
+
+tests/
+phpunit.xml
+.idea/
+.vscode/

@@ -31,3 +31,4 @@ Route::group(['prefix' => 'v1', 'namespace' => '\App\Http\Controllers\Api\V1'], 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::put('/update-profile', [UserController::class, 'update']);
+Route::get('/users/{id}', [UserController::class, 'show']);

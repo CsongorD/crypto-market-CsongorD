@@ -33,6 +33,7 @@ class _LoginState extends State<Login> {
       await prefs.setString('phone', response['user']['phone']);
       await prefs.setString('token', response['token']);
       await prefs.setBool('is_logged_in', true);
+      await prefs.setBool("is_biometrics_enabled", false);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(response['message']),

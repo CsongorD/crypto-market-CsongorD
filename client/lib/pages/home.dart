@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:frontend/pages/login.dart';
 import 'package:frontend/pages/profile.dart';
+import 'package:frontend/widgets/biometric_lock.dart';
 import 'package:frontend/widgets/crypto_list.dart';
 import 'package:frontend/widgets/landing.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,9 +14,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String isLoggedIn = "false";
   late SharedPreferences preferences;
+  bool isLoggedIn = false;
   bool isLoading = false;
+  bool isAuthenticated = false;
+  bool isBiometricsEnabled = false;
 
   @override
   void initState() {
@@ -31,7 +33,19 @@ class _HomeState extends State<Home> {
     preferences = await SharedPreferences.getInstance();
     setState(() {
       isLoading = false;
-      isLoggedIn = preferences.getBool('is_logged_in').toString();
+      isLoggedIn = preferences.getBool('is_logged_in').toString() == 'true'
+          ? true
+          : false;
+      isBiometricsEnabled =
+          preferences.getBool("is_biometrics_enabled").toString() == "true"
+              ? true
+              : false;
+    });
+  }
+
+  void authenticate(authenticate) {
+    setState(() {
+      isAuthenticated = authenticate;
     });
   }
 
@@ -51,7 +65,7 @@ class _HomeState extends State<Home> {
         titleSpacing: 2,
         leading: const Icon(Icons.currency_bitcoin),
         actions: [
-          isLoggedIn == "true"
+          isLoggedIn
               ? IconButton(
                   onPressed: () {
                     Navigator.push(
@@ -76,17 +90,18 @@ class _HomeState extends State<Home> {
       ),
       body: Center(
         child: SingleChildScrollView(
-          child: isLoading
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : const Column(
-                  children: [
-                    Landing(),
-                    CryptoList(),
-                  ],
-                ),
-        ),
+            child: isLoading
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : isLoggedIn && isBiometricsEnabled && !isAuthenticated
+                    ? BiometricLock(
+                        authenticate: authenticate,
+                      )
+                    : const Column(children: <Widget>[
+                        Landing(),
+                        CryptoList(),
+                      ])),
       ),
     );
   }

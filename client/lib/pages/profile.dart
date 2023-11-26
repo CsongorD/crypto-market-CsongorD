@@ -140,7 +140,9 @@ class _ProfileState extends State<Profile> {
                         title: 'App lock',
                         icon: Icons.verified_user,
                         textColor: Colors.black,
-                        onPress: () {},
+                        onPress: () {
+                          preferences.setBool("is_biometrics_enabled", true);
+                        },
                       ),
                       const Divider(
                         color: Colors.grey,

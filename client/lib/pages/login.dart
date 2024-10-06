@@ -92,27 +92,6 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-                // Container(
-                //   margin: const EdgeInsets.all(10),
-                //   width: 300,
-                //   child: TextFormField(
-                //     controller: name,
-                //     style: const TextStyle(
-                //       color: Colors.white,
-                //     ),
-                //     cursorColor: Colors.white,
-                //     decoration: const InputDecoration(
-                //       enabledBorder: OutlineInputBorder(
-                //           borderSide: BorderSide(color: Colors.white)),
-                //       focusedBorder: OutlineInputBorder(
-                //           borderSide: BorderSide(color: Colors.white)),
-                //       labelStyle: TextStyle(color: Colors.white),
-                //       iconColor: Colors.white,
-                //       hintStyle: TextStyle(color: Colors.white),
-                //       labelText: 'Enter your username',
-                //     ),
-                //   ),
-                // ),
                 Container(
                   margin: const EdgeInsets.all(10),
                   width: 300,

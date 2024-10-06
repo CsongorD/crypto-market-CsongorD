@@ -141,7 +141,11 @@ class _ProfileState extends State<Profile> {
                         icon: Icons.verified_user,
                         textColor: Colors.black,
                         onPress: () {
-                          preferences.setBool("is_biometrics_enabled", true);
+                          preferences.setBool(
+                              "is_biometrics_enabled",
+                              (preferences.getBool("is_biometrics_enabled")!
+                                  ? false
+                                  : true));
                         },
                       ),
                       const Divider(

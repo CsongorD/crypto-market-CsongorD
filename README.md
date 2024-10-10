@@ -54,7 +54,7 @@ Crypto Market is a multi-platform application for following the current cryptocu
 <h2> Getting Started :arrow_forward:</h2>
 
 <div id="prerequisites"></div>
-<h2> Prerequisites :ballot_box_with_check:</h2>
+<h3> Prerequisites :ballot_box_with_check:</h3>
 
 To run this project, you need to have the following:
 
@@ -64,18 +64,18 @@ To run this project, you need to have the following:
 :four: Flutter <br>
 
 <div id="installation"></div>
-<h2> Installation :floppy_disk:</h2>
+<h3> Installation :floppy_disk:</h3>
 
-<h3> Server side</h3>
+<h4> Server side</h4>
 
-<h4> Install dependencies</h4>
+<h5> Install dependencies</h5>
 
 ```bash
 cd ./backend
 composer install
 ```
 
-<h4> .env file</h4>
+<h5> .env file</h5>
 
 1. Copy the .env.sample as .env,
 
@@ -103,7 +103,7 @@ composer install
       php artisan key:generate
    ```
 
-<h4> Prepare the database</h4>
+<h5> Prepare the database</h5>
 
 Before all, you have to start your MySQL server to be able to fill up your database
 
@@ -114,7 +114,8 @@ php artisan migrate
 
 - This command will run create the tables in your database.
 
-<h4> Running the code</h4>
+<h5> Running the code</h5>
+
 ```bash
 cd ./server
 php artisan serve
@@ -123,16 +124,16 @@ php artisan serve
 It will start the server on http://127.0.0.1:8000. It will watch the changes and restart the server if some ot the files
 changed.
 
-<h3> Client side</h3>
+<h4> Client side</h4>
 
-<h4> Install dependencies</h4>
+<h5> Install dependencies</h5>
 
 ```bash
 cd ./frontend
 flutter pub get
 ```
 
-<h4> Running the code</h4>
+<h5> Running the code</h5>
 
 ```bash
 cd ./frontend

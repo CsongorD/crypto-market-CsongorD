@@ -24,10 +24,7 @@ php artisan migrate --force
 
 # Clear and optimize caches
 echo "Clearing and optimizing cache..."
-php artisan cache:clear
-php artisan config:clear
-php artisan route:clear
-php artisan view:clear
+php artisan optimize:clear
 
 # Start Laravel development server
 echo "Starting Laravel server on port $PORT..."

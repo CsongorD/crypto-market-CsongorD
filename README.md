@@ -1,19 +1,11 @@
 <div id="readme-top"></div>
-
-<br>
-<br>
-
-<h2 align="center"> Crypto Market App </h2>
+<h1 align="center"> Crypto Market App  </h1>
   <br>
-<p align="center">
-    A cryptocurrency price tracker
-    <br>
-    <br>
-    <a href="https://github.com/CsongorD/Crypto-Market"><strong>Explore the docs :arrow_right:	</strong></a>
+<h3 align="center">A cryptocurrency price tracker  </h3>
+<br>
+    <h4 align="center" href="https://github.com/CsongorD/Crypto-Market"><strong>Explore the docs :arrow_right:	</strong></h4>
     <br />
-</p>
 
-<!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -35,37 +27,34 @@
   </ol>
 </details>
 
-<!-- ABOUT THE PROJECT -->
 <div id="about-the-project"></div>
-
-## About The Project :page_with_curl:
-
+<h2>About The Project :page_with_curl:</h2>
 <br />
 Crypto Market is a multi-platform application for following the current cryptocurrency prices, buying and selling crypto.
 <br />
 <br />
 
 <br />
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">Back to top :arrow_up:</a>)</p>
 
 <div id="built-with"></div>
+<h2> Built With :wrench:</h2>
 
-### Built With :wrench:
+[![Laravel][Laravel.img]][Laravel-url] [![PHP][PHP.img]][PHP-url]
+<br/>
 
-- [![Laravel][Laravel.img]][Laravel-url] [![PHP][PHP.img]][PHP-url]
-- [![Flutter][Flutter.img]][Flutter-url] [![Dart][Dart.img]][Dart-url]
-- [![MySQL][MySQL.img]][MySQL-url]
+[![Flutter][Flutter.img]][Flutter-url] [![Dart][Dart.img]][Dart-url]
+<br>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+[![MySQL][MySQL.img]][MySQL-url]
 
-<!-- GETTING STARTED -->
+<p align="right">(<a href="#readme-top">Back to top:arrow_up:</a>)</p>
+
 <div id="getting-started"></div>
-
-## Getting Started :arrow_forward:
+<h2> Getting Started :arrow_forward:</h2>
 
 <div id="prerequisites"></div>
-
-### Prerequisites :ballot_box_with_check:
+<h2> Prerequisites :ballot_box_with_check:</h2>
 
 To run this project, you need to have the following:
 
@@ -75,19 +64,18 @@ To run this project, you need to have the following:
 :four: Flutter <br>
 
 <div id="installation"></div>
+<h2> Installation :floppy_disk:</h2>
 
-## Installation :floppy_disk:
+<h3> Server side</h3>
 
-### Server side
-
-#### Install dependencies
+<h4> Install dependencies</h4>
 
 ```bash
 cd ./backend
 composer install
 ```
 
-#### .env file
+<h4> .env file</h4>
 
 1. Copy the .env.sample as .env,
 
@@ -115,7 +103,7 @@ composer install
       php artisan key:generate
    ```
 
-#### Prepare the database
+<h4> Prepare the database</h4>
 
 Before all, you have to start your MySQL server to be able to fill up your database
 
@@ -126,8 +114,7 @@ php artisan migrate
 
 - This command will run create the tables in your database.
 
-#### Running the code
-
+<h4> Running the code</h4>
 ```bash
 cd ./server
 php artisan serve
@@ -136,16 +123,16 @@ php artisan serve
 It will start the server on http://127.0.0.1:8000. It will watch the changes and restart the server if some ot the files
 changed.
 
-### Client side
+<h3> Client side</h3>
 
-#### Install dependencies
+<h4> Install dependencies</h4>
 
 ```bash
 cd ./frontend
 flutter pub get
 ```
 
-#### Running the code
+<h4> Running the code</h4>
 
 ```bash
 cd ./frontend
@@ -155,12 +142,10 @@ flutter run -d <device_id>
 With this `flutter run -d <device_id>` you can choose on which device you want to run the application.
 So with this command, you can run this app from any device like: Windows, macOS, Linux, Android,iOS and any browser.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">Back to top:arrow_up:</a>)</p>
 
-<!-- USAGE EXAMPLES -->
 <div id="usage"></div>
-
-## Usage :joystick:
+<h2> Usage :joystick:</h2>
 
 On this application currently you can track live info about cryptocurrencies on the landing page,
 on the left side of the header section you can click on the fingerprint icon and register or login.
@@ -169,20 +154,16 @@ If you are logged in the header on the landing page,
 the fingerprint icon changes to a profile icon where now you can view your profile.
 On your profile page you can log out.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">Back to top:arrow_up:</a>)</p>
 
-<!-- CONTACT -->
 <div id="contact"></div>
+<h2> Contact</h2>
 
-## Contact
+:envelope: **Deák Csongor** - deak.csongor1@gmail.com &nbsp;&nbsp;&nbsp; :point_right:
+&nbsp;&nbsp;&nbsp;
+[![Csongor's LinkedIn][linkedin-shield]][LinkedIn - Csongor]
 
-:envelope: **Deák Csongor** - deak.csongor1@gmail.com &nbsp;&nbsp;&nbsp;&nbsp; :point_right:
-&nbsp;&nbsp;&nbsp;&nbsp; [![Csongor's LinkedIn][linkedin-shield]][LinkedIn - Csongor]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+<p align="right">(<a href="#readme-top">Back to top:arrow_up:</a>)</p>
 
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [LinkedIn - Csongor]: https://www.linkedin.com/in/csongor-deak/

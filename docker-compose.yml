@@ -1,12 +1,11 @@
-version: "3.8"
-
 services:
   database:
     container_name: mysql-db
-    image: mysql:8.2
+    image: mysql:latest
     ports:
       - 3306:3306
     environment:
+      - MYSQL_HOST=mysql_db
       - MYSQL_DATABASE=crypto_market
       - MYSQL_USER=csongor
       - MYSQL_PASSWORD=pass123
@@ -15,8 +14,9 @@ services:
       - db-data:/var/lib/mysql
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      timeout: 20s
-      retries: 15
+      interval: 5s
+      timeout: 5s
+      retries: 20
 
   server:
     container_name: laravel-api
@@ -41,28 +41,28 @@ services:
 
   client:
     container_name: flutter-ui
-    # image: flutter-ui-prod:1.0.0
+    image: flutter-ui-prod:1.0.0
     build:
       context: ./client
       dockerfile: Dockerfile
-    image: "flutter"
     working_dir: "/home/dev"
     depends_on:
       - server
-      - emulator
+      # - emulator
     volumes:
       - "./client:/home/dev"
-
-  emulator:
-    container_name: android-emulator
-    image: us-docker.pkg.dev/android-emulator-268719/images/30-google-x64:30.1.2
-    expose:
-      - 8554/tcp
-      - 5555/tcp
-    devices:
-      - "/dev/kvm:/dev/kvm"
-    # env_files:
-    #   - .env
+    ports:
+      - "8080:8080"
+  # emulator:
+  #   container_name: android-emulator
+  #   image: us-docker.pkg.dev/android-emulator-268719/images/30-google-x64:30.1.2
+  #   expose:
+  #     - 8554/tcp
+  #     - 5555/tcp
+  #   devices:
+  #     - "/dev/kvm:/dev/kvm"
+  #   # env_files:
+  #   #   - .env
 
 volumes:
   db-data: ~

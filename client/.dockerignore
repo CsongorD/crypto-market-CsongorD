@@ -1,48 +1,6 @@
-
-# .vscode/
-
-# # Miscellaneous
-# *.class
-# *.log
-# *.pyc
-# *.swp
-# .DS_Store
-# .atom/
-# .buildlog/
-# .history
-# .svn/
-# migrate_working_dir/
-
-# # IntelliJ related
-# *.iml
-# *.ipr
-# *.iws
-# .idea/
-
-
-# # Flutter/Dart/Pub related
-# **/doc/api/
-# **/ios/Flutter/.last_build_id
-# .dart_tool/
-# .flutter-plugins
-# .flutter-plugins-dependencies
-# .packages
-# .pub-cache/
-# .pub/
-# pubspec.lock
-# build/
-
-# # Symbolication related
-# app.*.symbols
-
-# # Obfuscation related
-# app.*.map.json
-
-# .dockerignore
 .git
 .idea
 .vscode
-build
 .DS_Store
 *.iml
 android/.gradle
@@ -52,3 +10,8 @@ ios/Pods
 ios/Podfile.lock
 ios/Podfile
 *.log
+build/
+.dart_tool/
+.packages
+.pub/
+flutter_*.yaml

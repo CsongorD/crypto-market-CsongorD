@@ -93,7 +93,6 @@ composer install
   - DB_USERNAME = "YOUR DATABASE USERNAME"
   - DB_PASSWORD = "YOUR DATABASE PASSWORD"
 
-&&
 
 - https://coinmarketcap.com/ api key
   - CRYPTO_API = "YOUR CRYPTO API KEY"
@@ -149,11 +148,11 @@ So with this command, you can run this app from any device like: Windows, macOS,
 <h2> Usage :joystick:</h2>
 
 On this application currently you can track live info about cryptocurrencies on the landing page,
-on the left side of the header section you can click on the fingerprint icon and register or login.
+on the right side of the header section you can click on the fingerprint icon and register or login.
 After logging in, your profile page opens.
 If you are logged in the header on the landing page,
 the fingerprint icon changes to a profile icon where now you can view your profile.
-On your profile page you can log out.
+On your profile page you can log out and enable biometric lock if your device has a fingerprint scanner.
 
 <p align="right">(<a href="#readme-top">Back to top:arrow_up:</a>)</p>
 

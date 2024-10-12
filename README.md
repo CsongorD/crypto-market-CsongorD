@@ -48,7 +48,7 @@ Crypto Market is a multi-platform application for following the current cryptocu
 
 [![MySQL][MySQL.img]][MySQL-url]
 
-<p align="right">(<a href="#readme-top">Back to top:arrow_up:</a>)</p>
+<p align="right">(<a href="#readme-top">Back to top :arrow_up:</a>)</p>
 
 <div id="getting-started"></div>
 <h2> Getting Started :arrow_forward:</h2>
@@ -62,6 +62,10 @@ To run this project, you need to have the following:
 :two: MySQL <br>
 :three: Laravel <br>
 :four: Flutter <br>
+
+OR
+
+:five Docker & Docker Compose <br>
 
 <div id="installation"></div>
 <h3> Installation :floppy_disk:</h3>
@@ -89,10 +93,10 @@ composer install
 2. Fill up the environment variables with your:
 
 - MySQL connection:
+
   - DB_DATABASE = "YOUR DATABASE NAME"
   - DB_USERNAME = "YOUR DATABASE USERNAME"
   - DB_PASSWORD = "YOUR DATABASE PASSWORD"
-
 
 - https://coinmarketcap.com/ api key
   - CRYPTO_API = "YOUR CRYPTO API KEY"
@@ -142,7 +146,34 @@ flutter run -d <device_id>
 With this `flutter run -d <device_id>` you can choose on which device you want to run the application.
 So with this command, you can run this app from any device like: Windows, macOS, Linux, Android,iOS and any browser.
 
-<p align="right">(<a href="#readme-top">Back to top:arrow_up:</a>)</p>
+<div id="dockerization"></div>
+<h3>Dockerization</h3>
+
+1.Navigate to the project directory
+
+```bash
+cd ./Crypto-Market
+```
+
+2.Review the docker-compose.yml File
+
+- Set your env data:
+
+  MYSQL_DATABASE="YOUR DATABASE NAME"<br>
+  MYSQL_USER="YOUR DATABASE USERNAME"<br>
+  MYSQL_PASSWORD="YOUR DATABASE PASSWORD"<br>
+  MYSQL_ROOT_PASSWORD="YOUR ROOT PASSWORD"<br>
+  
+
+3.Build the Docker Containers
+
+```bash
+docker compose up --build
+```
+
+4.Access the Crypto Market on: `http://localhost:8080`
+
+<p align="right">(<a href="#readme-top">Back to top :arrow_up:</a>)</p>
 
 <div id="usage"></div>
 <h2> Usage :joystick:</h2>
@@ -154,7 +185,7 @@ If you are logged in the header on the landing page,
 the fingerprint icon changes to a profile icon where now you can view your profile.
 On your profile page you can log out and enable biometric lock if your device has a fingerprint scanner.
 
-<p align="right">(<a href="#readme-top">Back to top:arrow_up:</a>)</p>
+<p align="right">(<a href="#readme-top">Back to top :arrow_up:</a>)</p>
 
 <div id="contact"></div>
 <h2> Contact</h2>
@@ -163,7 +194,7 @@ On your profile page you can log out and enable biometric lock if your device ha
 &nbsp;&nbsp;&nbsp;
 [![Csongor's LinkedIn][linkedin-shield]][LinkedIn - Csongor]
 
-<p align="right">(<a href="#readme-top">Back to top:arrow_up:</a>)</p>
+<p align="right">(<a href="#readme-top">Back to top :arrow_up:</a>)</p>
 
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [LinkedIn - Csongor]: https://www.linkedin.com/in/csongor-deak/

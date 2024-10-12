@@ -66,7 +66,7 @@ To run this project, you need to have the following:
 
 OR
 
-:five Docker & Docker Compose <br>
+:five: Docker & Docker Compose <br>
 
 <div id="installation"></div>
 <h3> Installation :floppy_disk:</h3>
@@ -158,14 +158,15 @@ cd ./Crypto-Market
 
 2.Review the docker-compose.yml File
 
-- Set your env data:
+  - Set your env data:
 
-  MYSQL_DATABASE="YOUR DATABASE NAME"<br>
-  MYSQL_USER="YOUR DATABASE USERNAME"<br>
-  MYSQL_PASSWORD="YOUR DATABASE PASSWORD"<br>
-  MYSQL_ROOT_PASSWORD="YOUR ROOT PASSWORD"<br>
+    MYSQL_DATABASE="YOUR DATABASE NAME"<br>
+    MYSQL_USER="YOUR DATABASE USERNAME"<br>
+    MYSQL_PASSWORD="YOUR DATABASE PASSWORD"<br>
+    MYSQL_ROOT_PASSWORD="YOUR ROOT PASSWORD"<br>
 
-  3.Build the Docker Containers
+
+3.Build the Docker Containers
 
 ```bash
 docker compose up --build

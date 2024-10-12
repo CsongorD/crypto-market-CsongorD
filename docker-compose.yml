@@ -7,7 +7,7 @@ services:
     environment:
       - MYSQL_HOST=mysql_db
       - MYSQL_DATABASE=crypto_market
-      - MYSQL_USER=csongor
+      - MYSQL_USER=user
       - MYSQL_PASSWORD=pass123
       - MYSQL_ROOT_PASSWORD=pass123
     volumes:

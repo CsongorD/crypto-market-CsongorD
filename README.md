@@ -20,6 +20,7 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#dockerization">Dockerization</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -163,9 +164,8 @@ cd ./Crypto-Market
   MYSQL_USER="YOUR DATABASE USERNAME"<br>
   MYSQL_PASSWORD="YOUR DATABASE PASSWORD"<br>
   MYSQL_ROOT_PASSWORD="YOUR ROOT PASSWORD"<br>
-  
 
-3.Build the Docker Containers
+  3.Build the Docker Containers
 
 ```bash
 docker compose up --build

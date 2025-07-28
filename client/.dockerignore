@@ -15,3 +15,9 @@ build/
 .packages
 .pub/
 flutter_*.yaml
+build/
+node_modules/
+*.lock
+*.iml
+*.swp
+*.bak

@@ -1,13 +1,9 @@
-# Use the official Flutter image as base
-FROM ghcr.io/cirruslabs/flutter:3.24.3
+FROM ghcr.io/cirruslabs/flutter:stable as build
 
-# Set the working directory inside the container
-WORKDIR /home/dev
-
-# Copy the current directory contents into the container
+WORKDIR /app
 COPY . .
+RUN flutter build web
 
-# Expose the port for the Flutter web server
-EXPOSE 8080
-
-ENTRYPOINT ["sh","./entrypoint.sh"]
+FROM nginx:alpine
+COPY --from=build /app/build/web /usr/share/nginx/html
+EXPOSE 80

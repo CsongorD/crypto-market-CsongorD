@@ -3,13 +3,13 @@ services:
     container_name: mysql-db
     image: mysql:latest
     ports:
-      - 3306:3306
+      - 3366:3306
     environment:
-      - MYSQL_HOST=mysql_db
+      - MYSQL_HOST=mysql-db
       - MYSQL_DATABASE=crypto_market
       - MYSQL_USER=user
-      - MYSQL_PASSWORD=pass123
-      - MYSQL_ROOT_PASSWORD=pass123
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
     volumes:
       - db-data:/var/lib/mysql
     healthcheck:
@@ -31,6 +31,12 @@ services:
     environment:
       - APP_ENV=local
       - CONTAINER_ROLE=app
+      - DB_HOST=mysql-db
+      - DB_PORT=3306
+      - DB_DATABASE=crypto_market
+      - DB_USERNAME=user
+      - DB_PASSWORD=password
+      - DB_ROOT_PASSWORD=password
     ports:
       - 8000:8000
     depends_on:
@@ -49,7 +55,7 @@ services:
     volumes:
       - "./client:/home/dev"
     ports:
-      - "8080:8080"
+      - "8080:80"
 
 volumes:
   db-data: ~

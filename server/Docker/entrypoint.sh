@@ -1,34 +1,31 @@
 #!/bin/bash
 
-# Exit immediately if a command exits with a non-zero status.
 set -e
 
-# Check if Composer dependencies are installed
+echo "Waiting for MySQL to be ready..."
+until mysql -h"$DB_HOST" -u"$DB_USERNAME" -p"$DB_PASSWORD" -e 'SELECT 1'; do
+    echo "MySQL is unavailable - sleeping"
+    sleep 3
+done
+
+# Install dependencies if not present
 if [ ! -f "vendor/autoload.php" ]; then
     echo "Installing Composer dependencies..."
     composer install --no-progress --no-interaction --optimize-autoloader
 fi
 
-# Check if .env file exists, and create it from .env.example if not
+# Setup .env
 if [ ! -f ".env" ]; then
-    echo "Creating .env file for environment: $APP_ENV"
+    echo "Creating .env file..."
     cp .env.example .env
-    php artisan key:generate --no-interaction --force
-else
-    echo ".env file exists."
+    php artisan key:generate
 fi
 
-# Run migrations
-echo "Running database migrations..."
+echo "Running migrations..."
 php artisan migrate --force
 
-# Clear and optimize caches
-echo "Clearing and optimizing cache..."
+echo "Optimizing Laravel..."
 php artisan optimize:clear
 
-# Start Laravel development server
-echo "Starting Laravel server on port $PORT..."
-php artisan serve --port=$PORT --host=0.0.0.0 --env=.env
-
-# Execute the main Docker entrypoint
-exec docker-php-entrypoint "$@"
+echo "Starting Laravel on port $PORT..."
+php artisan serve --host=0.0.0.0 --port=$PORT
